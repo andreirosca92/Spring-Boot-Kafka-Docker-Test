@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  zookeeper:
+    image: wurstmeister/zookeeper
+    ports:
+      - "2182:2182"
+  kafka:
+    image: wurstmeister/kafka
+    ports:
+      - "9093:9093"
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: 127.0.0.1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2182
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'false'
